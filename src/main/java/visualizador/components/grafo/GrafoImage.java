@@ -8,8 +8,8 @@ import javafx.scene.shape.Rectangle;
 public class GrafoImage extends Rectangle implements Cloneable {
 
     public GrafoImage() {
-        super(80d, 120d, Color.BLUE);
-        strokeProperty().setValue(Color.YELLOW);
+        super(40d, 60d, Color.BLUE);
+     //   strokeProperty().setValue(Color.BLUE);
         cursorProperty().setValue(Cursor.HAND);
         focusTraversableProperty().setValue(false);
 

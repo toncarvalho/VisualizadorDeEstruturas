@@ -16,17 +16,20 @@ import visualizador.components.grafo.GrafoImage;
 
 public class Visualizador extends Application {
 
+
     private GrafoHelper grafos;
     private Bounds limites;
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        Double posicaoY = 15.0;
         AnchorPane box = new AnchorPane();
         box.paddingProperty().setValue(new Insets(20));
         box.setPrefSize(800, 600);
 
-        Canvas canvas = new Canvas(700, 500);
+        Canvas canvas = new Canvas(750, 550);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         box.getChildren().add(canvas);
 
@@ -34,11 +37,15 @@ public class Visualizador extends Application {
 
         grafos = new GrafoHelper(limites);
 
+
         for (int i = 0; i <= 5; i++) {
             limites = grafos.addGrafo(DirecaoGrafo.DIREITA, box, limites);
             System.out.println(" adicionando figura: " + i + " em coordenadas: " + limites);
         }
         //determinar largura da linha. o largura da linha é metade da largura de uma figura portanto segue
+
+
+        posicaoY = limites.getHeight() / 2;
 
         final int iteracoes = grafos.getGrafosList().size() - 1;
 
@@ -48,19 +55,9 @@ public class Visualizador extends Application {
 
             GrafoImage figura = grafos.getGrafosList().get(i);
             System.out.println(" figura: " + i);
-
-            /**
-             * @param x1 the X coordinate of the starting point of the line.
-             * @param y1 the Y coordinate of the starting point of the line.
-             * @param x2 the X coordinate of the ending point of the line.
-             * @param y2 the Y coordinate of the ending point of the line.
-             */
-
-
             int proximo = (i + 1);
 
             if (proximo <= iteracoes) {
-
 
                 GrafoImage figura2 = grafos.getGrafosList().get(proximo);
 
@@ -68,13 +65,10 @@ public class Visualizador extends Application {
                 x1 = figura.getBoundsInParent().getMaxX();
                 x2 = figura2.getBoundsInParent().getMinX();
 
-
-                drawLines(gc, x1, 15, x2, 15);
+                drawLines(gc, x1, posicaoY, x2, posicaoY);
             }
 
-
         }
-
 
         primaryStage.setScene(new Scene(box));
         primaryStage.show();
@@ -83,18 +77,13 @@ public class Visualizador extends Application {
 
     private void drawLines(final GraphicsContext gc, final double... coordenadas) {
 
-        //gc.setFill(Color.GREEN);
-
         gc.setStroke(Color.RED);
 
         gc.setLineWidth(2);
 
-        System.out.println(" adicionando aresta com coordenadas: " + coordenadas[0] + " " + coordenadas[1] + " " + coordenadas[2] + " " + coordenadas[3]);
-
         gc.strokeLine(coordenadas[0], coordenadas[1], coordenadas[2], coordenadas[3]);
 
-        /*gc.fillText("----", coordenadas[0], coordenadas[3]);*/
-        //gc.fillRect(coordenadas[0], coordenadas[3], 150, 50);
+        System.out.println(" adicionando aresta com coordenadas: " + coordenadas[0] + " " + coordenadas[1] + " " + coordenadas[2] + " " + coordenadas[3]);
 
 
     }

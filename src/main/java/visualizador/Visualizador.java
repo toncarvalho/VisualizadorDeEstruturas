@@ -77,8 +77,7 @@ public class Visualizador extends Application {
         }
 
     }
-        //determinando onde deve ser desenhada a linha para representar a aresta.
-        posicaoY = limites.getHeight() / 2;
+
 
     private void desenhaArestasAbaixo(List<GrafoImage> grafosList, GraphicsContext gc) {
 

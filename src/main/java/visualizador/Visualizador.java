@@ -45,6 +45,7 @@ public class Visualizador extends Application {
         //determinar largura da linha. o largura da linha é metade da largura de uma figura portanto segue
 
 
+        //determinando onde deve ser desenhada a linha para representar a aresta.
         posicaoY = limites.getHeight() / 2;
 
         final int iteracoes = grafos.getGrafosList().size() - 1;

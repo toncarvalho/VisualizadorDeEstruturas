@@ -12,6 +12,8 @@ public class GrafoImage extends Rectangle implements Cloneable {
      //   strokeProperty().setValue(Color.BLUE);
         cursorProperty().setValue(Cursor.HAND);
         focusTraversableProperty().setValue(false);
+        setArcHeight(25);
+        setArcWidth(25);
 
     }
 
